@@ -5,7 +5,7 @@
 This project uses microservice architecture, with :
 Frontend: React
 Backend: Golang and Python
-DB: PostgreSQL and MongoDB
+DB: PostgreSQL and MongoDB (User)
 ```
 
 # Description
@@ -27,8 +27,8 @@ Nothing superpower
 
 # API_Docs
 
-### POST /register
-> Register User
+### POST /customers/register
+> Register Customer
 
 **Request Headers**
 ```
@@ -91,8 +91,8 @@ not needed
 }
 ```
 
-## POST /users/confirm
-> Confirm user
+## POST /customers/confirm
+> Confirm Customer
 
 **Request Headers**
 ```
