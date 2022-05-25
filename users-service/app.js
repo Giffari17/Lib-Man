@@ -1,17 +1,12 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const User = require('./models/User')
+const router = require('./routes')
 
-app.get('/', async (req, res) => {
-  console.log("masuk")
-  try {
-    const result = await User.create({ firstname: 'boy' })
-    console.log(result)
-  } catch (error) {
-    console.log(error)
-  }
-})
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+app.use(router)
 
 app.listen(port, () => {
   require('./connection/db')
