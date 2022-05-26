@@ -21,7 +21,8 @@
 ### AccountStatus
 
 1. status:string
-2. lastLoggedIn:date
+2. created:date
+3. lastLoggedIn:date
 
 ### Skills
 

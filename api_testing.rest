@@ -1,32 +1,32 @@
-POST http://localhost:3000/users
+POST http://localhost:3000/users?role=superadmin
 content-type: application/json
 
 {
     "email": "gyusrulkhoi@gmail.com",
-    "password": "rahasia123",
-    "role": "superadmin"
+    "password": "rahasia123"
 }
 
 ###Register Employeer
 
-POST http://localhost:3000/users
+POST http://localhost:3000/users?role=employeer
 content-type: application/json
 
 {
-    "companyName": "PT Firstwap",
-    "email": "gyusrulkhoi@gmail.com",
-    "password": "rahasia123",
-    "role": "employeer"
+    "firstname": "abc",
+    "companyName": "abc",
+    "username": "asas",
+    "password": "rahaasdasdasdas",
+    "email": "abc@g.cps"
 }
 
 ###Register Employee
 
-POST http://localhost:3000/users
+POST http://localhost:3000/users?role=employee
 content-type: application/json
 
 {
     "firstname": "giffari",
-    "email": "gyusrulkhoi@gmail.com",
+    "email": "gyusrulkhoi@gmail2.com",
     "password": "rahasia123",
     "role": "employeer"
 }

@@ -5,6 +5,10 @@ const accountBSON = {
         type: String,
         default: 'Inactive'
     },
+    created: {
+        type: Date,
+        default: Date.now()
+    },
     lastLoggedIn: {
         type: Date,
         default: Date.now()

@@ -14,7 +14,9 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: {
         type: String,
-        unique: true
+        unique: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Not in email form"],
+        required: [true, "Email can't be emptied"]
     },
     password: {
         type: String,
@@ -23,21 +25,48 @@ const userSchema = new mongoose.Schema({
     role: { type: String },
     skills: [skillBSON],
     experiences: [experienceBSON],
-    status: String,
+    status: {
+        type: String,
+        enum: {
+            values: ["Normal", "Don't distrub", "Open To Work", "Hiring"],
+            message: "Status is not available"
+        },
+        default: "Normal"
+    },
     accountStatus: accountBSON
 })
 
+userSchema.pre('validate', function(next) {
+    if(this.role === 'superadmin') {
+        this.status = 'Normal'
+    }
+    if(this.email.length > 25) {
+        throw { name: "Email exceed 25 chars" }
+    }
+    if(this.password.length < 8) {
+        throw { name: "Password not up to 8 chars" }
+    }
+    next()
+})
 userSchema.pre('save', function(next) {
     this.password = hashPassword(this.password)
+    console.log(this)
     if(this.role === 'superadmin') {
         this.username = 'super-' + generateRandomString()
-    } else if (this.role === 'employeer' || this.role === 'employee'){
-        if(!this.firstname || !this.lastname || !this.username) {
-            throw new Error("Emptied Firstname or lastname")
-        }
     } else if (this.role === 'employeer') {
-        if(!this.companyNames) {
-            throw new Error("Emptied company name")
+        if(!this.firstname && !this.lastname) {
+            throw { name: "Emptied Firstname or lastname" }
+        }
+        if(!this.companyName) {
+            throw { name: "Emptied company name" }
+        }
+    } else if (this.role === 'employee'){
+        if(!this.firstname && !this.lastname) {
+            console.log(this)
+            throw { name: "Emptied Firstname or lastname" }
+        }
+        if(!this.username) {
+            throw { name: "Emptied username" }
         }
     }
     next()
