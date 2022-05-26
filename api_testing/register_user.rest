@@ -14,9 +14,9 @@ content-type: application/json
 {
     "firstname": "abc",
     "companyName": "abc",
-    "username": "asas",
-    "password": "rahaasdasdasdas",
-    "email": "abc@g.cps"
+    "username": "abc",
+    "email": "abc@g.cps",
+    "password": "rahaasdasdasdas"
 }
 
 ###Register Employee
@@ -25,12 +25,8 @@ POST http://localhost:3000/users?role=employee
 content-type: application/json
 
 {
-    "firstname": "giffari",
-    "email": "gyusrulkhoi@gmail2.com",
-    "password": "rahasia123",
-    "role": "employeer"
+    "firstname": "abc",
+    "username": "abc",
+    "email": "abcd@g.cps",
+    "password": "rahaasdasdasdas"
 }
-
-###
-
-GET http://localhost:3000/users

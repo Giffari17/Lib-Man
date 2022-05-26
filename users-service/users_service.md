@@ -8,7 +8,7 @@
 2. lastname:string
 3. companyName:string
 4. bio:string
-5. addressLstring
+5. address:string
 6. username:string
 7. email:string
 8. password:string
@@ -35,5 +35,19 @@
 2. role:string
 3. type:string
 4. period:string
+
+### verificationCodes
+
+1. userId:string
+2. verificationCode
+3. Created
+4. Expired
+
+### resetTokens
+
+1. userId:string
+2. resetToken:string
+3. created:date
+4. expired:date
 
 Notes: OAuth 2.0 and 2FA Authentication are comming soon

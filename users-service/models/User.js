@@ -22,7 +22,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password can't be emptied"]
     },
-    role: { type: String },
+    role: { 
+        type: String,
+        enum: {
+            values: ["superadmin", "employeer", "employee"],
+            message: "Role is not available"
+        } 
+    },
     skills: [skillBSON],
     experiences: [experienceBSON],
     status: {
@@ -50,7 +56,6 @@ userSchema.pre('validate', function(next) {
 })
 userSchema.pre('save', function(next) {
     this.password = hashPassword(this.password)
-    console.log(this)
     if(this.role === 'superadmin') {
         this.username = 'super-' + generateRandomString()
     } else if (this.role === 'employeer') {
@@ -61,8 +66,10 @@ userSchema.pre('save', function(next) {
             throw { name: "Emptied company name" }
         }
     } else if (this.role === 'employee'){
+        if(this.companyName) {
+            throw { name: "Company name is existed" }
+        }
         if(!this.firstname && !this.lastname) {
-            console.log(this)
             throw { name: "Emptied Firstname or lastname" }
         }
         if(!this.username) {

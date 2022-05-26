@@ -25,21 +25,25 @@ const registerUser = async (req, res, next) => {
             status
         } = req.body
         const { role } = req.query
-        const resp = await User.create({
+        let resp = await User.create({
             firstname, lastname, 
             companyName, address, username, 
             email, password, role, status
         })
-
-        // switch (role) {
-        //     case 'superadmin':
-
-        //         break
-        //     case 'employeer':
-        //         break
-        //     case 'employee':
-        // }
-        // res.status(201).json()
+        console.log(resp)
+        switch (resp.role) {
+            case 'superadmin':
+                resp = {
+                    username: resp.username,
+                    email: resp.email
+                }
+                break
+            default:
+                resp = {
+                    email: resp.email
+                }
+        }
+        res.status(201).json(resp)
     } catch (error) {
         next(error)
     }

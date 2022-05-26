@@ -1,4 +1,5 @@
 const errorHandler = (err, req, res, next) => {
+    console.log(err)
     if (err.name ==='MongoServerError') {
         //unique => err.code === 11000
         res.status(400).json({
@@ -20,6 +21,10 @@ const errorHandler = (err, req, res, next) => {
         } else if (err.errors.status.message === 'Status is not available') {
             res.status(400).json({
                 message: "Status is not available"
+            })
+        } else if (err.errors.status.message === 'Role is not available') {
+            res.status(400).json({
+                message: "Role is not available"
             })
         }
     } else if (err.name === "Email exceed 25 chars") {

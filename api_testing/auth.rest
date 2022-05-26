@@ -1,0 +1,17 @@
+### Login superadmin
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+    "username": "super-7LU79C7889",
+    "password": "rahasia"
+}
+
+### Login non-superadmin
+POST http://localhost:3000/login
+content-type: application/json
+
+{
+    "email": "gyusrulkhoi@gmail.com",
+    "password": "rahasia"
+}

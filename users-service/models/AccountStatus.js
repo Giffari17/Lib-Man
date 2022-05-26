@@ -3,16 +3,16 @@ const mongoose = require('mongoose')
 const accountBSON = {
     status: {
         type: String,
-        default: 'Inactive'
+        enum: {
+            values: ["Inactived", "Actived", "Blocked"]
+        },
+        default: 'Inactived'
     },
     created: {
         type: Date,
         default: Date.now()
     },
-    lastLoggedIn: {
-        type: Date,
-        default: Date.now()
-    }
+    lastLoggedIn: Date
 }
 const accountStatusSchema = new mongoose.Schema(accountBSON)
 const Account = mongoose.model('AccontStatus', accountStatusSchema)
