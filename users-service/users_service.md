@@ -8,7 +8,7 @@
 2. lastname:string
 3. bio:string
 4. addressLstring
-5. username:strin
+5. username:string
 6. email:string
 7. password:string
 8. role:string

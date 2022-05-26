@@ -1,6 +1,9 @@
+const User = require('../models/User')
+
 const getAllUser = async (req, res, next) => {
     try {
-        console.log("masuk");
+        const users =  await User.find()
+        console.log(users);
     } catch (error) {
         console.log(error);
     }
@@ -16,8 +19,13 @@ const getUserById = async (req, res, next) => {
 
 const registerUser = async (req, res, next) => {
     try {
-        console.log("masuk");
+        console.log("Sampai sini");
+        const { username, email, password, role } = req.body
+        await User.create({
+            username, email, password, role
+        })
     } catch (error) {
+        console.log("Masuk1");
         console.log(error);
     }
 }
