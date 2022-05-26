@@ -1,8 +1,18 @@
 const mongoose = require('mongoose')
 
-const accontStatusSchema = new mongoose.Schema({
-    name: String,
-    lastLoggedIn: Date
-})
+const accountBSON = {
+    status: {
+        type: String,
+        default: 'Inactive'
+    },
+    lastLoggedIn: {
+        type: Date,
+        default: Date.now()
+    }
+}
+const accountStatusSchema = new mongoose.Schema(accountBSON)
+const Account = mongoose.model('AccontStatus', accountStatusSchema)
 
-module.export = mongoose.model('AccontStatus', accontStatusSchema)
+module.exports = {
+    Account, accountBSON
+}

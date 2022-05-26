@@ -1,9 +1,3 @@
-
-
-GET http://localhost:3000/users
-
-###Register User Superadmin
-
 POST http://localhost:3000/users
 content-type: application/json
 
@@ -12,3 +6,31 @@ content-type: application/json
     "password": "rahasia123",
     "role": "superadmin"
 }
+
+###Register Employeer
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "companyName": "PT Firstwap",
+    "email": "gyusrulkhoi@gmail.com",
+    "password": "rahasia123",
+    "role": "employeer"
+}
+
+###Register Employee
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "firstname": "giffari",
+    "email": "gyusrulkhoi@gmail.com",
+    "password": "rahasia123",
+    "role": "employeer"
+}
+
+###
+
+GET http://localhost:3000/users

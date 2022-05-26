@@ -6,20 +6,21 @@
 
 1. firstname:string
 2. lastname:string
-3. bio:string
-4. addressLstring
-5. username:string
-6. email:string
-7. password:string
-8. role:string
-9. skills:Skills
-10. experiences:Experiences
-11. status:string
-12. accountStatus:AccountStatus
+3. companyName:string
+4. bio:string
+5. addressLstring
+6. username:string
+7. email:string
+8. password:string
+9. role:string
+10. skills:Skills
+11. experiences:Experiences
+12. status:string
+13. accountStatus:AccountStatus
 
 ### AccountStatus
 
-1. name:string
+1. status:string
 2. lastLoggedIn:date
 
 ### Skills
